@@ -11,5 +11,5 @@ function call_api($url, $method, $data = false){
         ],
         'json' => $data
     ]);
-    return json_decode($response->getBody()->getContents());
+    return json_decode($response->getBody()->getContents(), true);
 }
