@@ -16,7 +16,7 @@
 
     <div class="container mx-auto p-8">
         <div class="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto">
-            <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">Create New Lokasi</h2>
+            <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">Update Lokasi</h2>
             <form method="POST" action="<?php echo site_url('index.php/lokasi/update/'.$lokasi['id']); ?>">
                 <div class="relative z-0 w-full mb-6 group">
                     <input type="text" name="nama_lokasi" id="nama_lokasi" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="<?php echo($lokasi['namaLokasi'])?>">

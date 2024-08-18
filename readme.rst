@@ -1,71 +1,56 @@
-###################
-What is CodeIgniter
-###################
+# How to run
+This is the frontend component of the project management application. Before running this project, ensure that the backend service is up and running by following the steps at https://github.com/JamaludinAhmad/backend-project-management/.
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+### 1. Clone the Repository
 
-*******************
-Release Information
-*******************
+Clone this repository to your local machine:
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+```bash
+git clone https://github.com/JamaludinAhmad/frontend-project-management.git
+```
 
-**************************
-Changelog and New Features
-**************************
+### 2. RUN the project
+#### If you're using XAMPP:
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+- Move your project directory to the htdocs folder (e.g., C:/xampp/htdocs/your-project-name/).
 
-*******************
-Server Requirements
-*******************
+- Start Apache and MySQL in the XAMPP control panel.
 
-PHP version 5.6 or newer is recommended.
+- Open the project in the browser by navigating to:
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+```
+http://localhost/your-project-name/
+```
+#### If you're using a custom PHP server, you can start the server by navigating to the root directory of your project and running:
+```
+php -S localhost:8000
+```
+Now, visit http://localhost:8000 in your web browser.
 
-************
-Installation
-************
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+# Important note
+if your backend service not using port 9000, you should change the port we are used in project to consume the API, here's a step:
+#### 1. Go to ``` /application/controllers```
+#### 2. Change the port
+- In Lokasi controller
+```php
+class Lokasi extends CI_Controller{
+    private $api_url = 'http://localhost:{{port}}/api/lokasi'; you should chage the port here
 
-*******
-License
-*******
+    public function __construct(){
+    -
+    -
+    -
+    -
+```
+- In Proyek controller
+```php
+class Proyek extends CI_Controller{
+    private $api_url = 'http://localhost:{{port}}/api'; <- you should change your port here
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+    public function __construct(){
+    -
+    -
+    -
+    -
+    -
