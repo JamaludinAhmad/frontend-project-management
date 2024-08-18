@@ -44,7 +44,7 @@ class Proyek extends CI_Controller{
             'lokasiProyek' => $object_of_lokasi,
             'tglMulai' => $tglMulai,
             'tglSelesai' => $tglSelesai,
-            'keterangan' => 'asdfkjsldkfjslkfjslkdjflskjdf'
+            'keterangan' => $this->input->post('keterangan'),
         ];
         
 
@@ -83,7 +83,7 @@ class Proyek extends CI_Controller{
             'lokasiProyek' => $object_of_lokasi,
             'tglMulai' => $tglMulai,
             'tglSelesai' => $tglSelesai,
-            'keterangan' => 'asdfkjsldkfjslkfjslkdjflskjdf'
+            'keterangan' => $this->input->post('keterangan'),
         ];
 
         $response = call_api($this->api_url.('/proyek'), 'PUT', $data);

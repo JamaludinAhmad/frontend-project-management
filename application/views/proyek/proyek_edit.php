@@ -87,6 +87,12 @@
                             <input type="hidden" name="lokasi[]" :value="selected.id">
                         </template>
                     </div>
+                    <div class="mb-6">
+                        <label for="keterangan" class="block text-sm font-medium text-gray-700">Keterangan</label>
+                        <textarea id="keterangan" name="keterangan" rows="4" minlength="10"
+                                class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                placeholder="Enter additional information here..."><?php echo($proyek['keterangan'])?></textarea>
+                    </div>
                     <button type="submit" class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg">Submit</button>
                 </div>
             </form>
