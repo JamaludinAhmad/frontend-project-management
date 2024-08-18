@@ -48,7 +48,43 @@ class Proyek extends CI_Controller{
 
         $response = call_api($this->api_url.('/proyek'), 'POST', $data);
 
-        redirect('proyek');
+        redirect('index.php/proyek');
+    }
+
+    public function edit($id){
+        $data['proyek'] = call_api($this->api_url.('/proyek/'.$id), 'GET');
+        $data['lokasi_list'] = call_api($this->api_url.('/lokasi'), 'GET');
+
+        $this->load->view('proyek/proyek_edit', $data);
+    }
+
+    public function update($id){
+
+        var_dump($this->input->post($id));
+        $array_of_lokasi = $this->input->post('lokasi');
+        $object_of_lokasi = array();
+
+        foreach($array_of_lokasi as $lokasi){
+            $object_of_lokasi[] = array('id' => $lokasi);
+        }
+        
+        $tglMulai = date('Y-m-d', strtotime($this->input->post('start-date')));
+        $tglSelesai = date('Y-m-d', strtotime($this->input->post('end-date')));
+    
+        $data = [
+            'id' => $id,
+            'namaProyek' => $this->input->post('nama_proyek'),
+            'pimpinanProyek' => $this->input->post('pimpinan_proyek'),
+            'client' => $this->input->post('client'),
+            'lokasiProyek' => $object_of_lokasi,
+            'tglMulai' => $tglMulai,
+            'tglSelesai' => $tglSelesai,
+            'keterangan' => 'asdfkjsldkfjslkfjslkdjflskjdf'
+        ];
+
+        $response = call_api($this->api_url.('/proyek'), 'PUT', $data);
+
+        redirect('index.php/proyek');
     }
 
 
