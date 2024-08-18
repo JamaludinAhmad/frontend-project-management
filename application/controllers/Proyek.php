@@ -15,8 +15,10 @@ class Proyek extends CI_Controller{
 
 
     public function index(){
-        $data['proyek_list'] = call_api($this->api_url.('/proyek'), 'GET');;
+        $data['proyek_list'] = call_api($this->api_url.('/proyek'), 'GET');
+        $data['lokasi_list'] = call_api($this->api_url.('/lokasi'), 'GET');
         $this->load->view('proyek/proyek_list', $data);
+        $this->load->view('lokasi/lokasi_list', $data);
     }
 
     public function create(){
