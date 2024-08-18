@@ -7,56 +7,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=<?php echo base_url('public/style/output.css')?>>
-    <title>Edit Proyek</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?php echo base_url('public/style/output.css'); ?>">
+    <title>Update Proyek</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body>
-    
+<body class="bg-gray-100">
 
-    <form class="max-w-md mx-auto" method='POST' action="<?php echo site_url('index.php/proyek/update/'.$proyek['id'])?>">
-        <div class="relative z-0 w-full mb-5 group">
-            <input name="nama_proyek" id="nama_proyek" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="<?php echo ($proyek['namaProyek'])?>"/>
-            <label for="nama_proyek" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"></label>
-        </div>
-        <div class="relative z-0 w-full mb-5 group">
-            <input name="pimpinan_proyek" id="pimpinan_proyek" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="<?php echo ($proyek['pimpinanProyek'])?>"/>
-            <label name="pimpinan_proyek" for="pimpinan_proyek" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pimpinan Proyek</label>
-        </div>
-        <div class="relative z-0 w-full mb-5 group">
-            <input name="client" id="client" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="<?php echo ($proyek['client'])?>"/>
-            <label for="client" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Client</label>
-        </div>
-        
-        <div class="relative max-w-sm">
-            <div class="absolute inset-y-0  my-2 start-0 flex items-center ps-3.5 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </div>
-            <input datepicker name="start-date"id="datepicker-start-date" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select start date" value="<?php echo ($proyek['tglMulai'])?>">
-        </div>
+    <div class="container mx-auto p-8">
+        <div class="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto">
+            <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">Update Proyek</h2>
+            <form method="POST" action="<?php echo site_url('index.php/proyek/update/'.$proyek['id']); ?>">
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="text" name="nama_proyek" id="nama_proyek" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="<?php echo ($proyek['namaProyek'])?>">
+                    <label for="nama_proyek" class="absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Proyek</label>
+                </div>
+                
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="text" name="pimpinan_proyek" id="pimpinan_proyek" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="<?php echo ($proyek['pimpinanProyek'])?>">
+                    <label for="pimpinan_proyek" class="absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-6">Pimpinan Proyek</label>
+                </div>
+                
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="text" name="client" id="client" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required value="<?php echo ($proyek['client'])?>">
+                    <label for="client" class="absolute text-sm text-gray-500 transform -translate-y-6 scale-75 top-3 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-6">Client</label>
+                </div>
 
-        <div class="relative max-w-sm">
-            <div class="absolute inset-y-0  my-2 start-0 flex items-center ps-3.5 pointer-events-none">
-                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                </svg>
-            </div>
-            <input datepicker name="end-date"id="datepicker-end-date" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select end date" value="<?php echo ($proyek['namaProyek'])?>">
-        </div>
-        <div class="w-full">
-            <label for="lokasi">Lokasi Proyek:</label>
-            <select class="form-control" id="lokasi" name="lokasi[]" multiple>
-                <?php foreach ($lokasi_list['data'] as $lokasi): ?>
-                    <option value="<?php echo $lokasi['id']; ?>"><?php echo ($lokasi['namaLokasi'].', '.$lokasi['kota'].','.$lokasi['negara'].', '.$lokasi['provinsi']); ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+                <div class="mb-6">
+                    <label for="datepicker-start-date" class="block mb-2 text-sm font-medium text-gray-700">Start Date</label>
+                    <div class="relative">
+                        <input datepicker type="text" name="start-date" id="datepicker-start-date" class="block w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" value="<?php echo ($proyek['tglMulai'])?>">
+                    </div>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="datepicker-end-date" class="block mb-2 text-sm font-medium text-gray-700">End Date</label>
+                    <div class="relative">
+                        <input datepicker type="text" name="end-date" id="datepicker-end-date" class="block w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" value="<?php echo ($proyek['tglSelesai'])?>">
+                    </div>
+                </div>
 
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-        
-    </form>
+                <div x-data="multiSelect()" class="mb-6">
+                    <label for="lokasi" class="block text-sm font-medium text-gray-700">Lokasi Proyek</label>
+                    <div class="relative">
+                        <input type="text" placeholder="Search..." 
+                            class="block w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+                            x-model="search" 
+                            @focus="isOpen = true" 
+                            @keydown.escape="isOpen = false" 
+                            @click.away="closeDropdown()">
+                        <div class="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-lg shadow-lg" 
+                            x-show="isOpen" 
+                            @mousedown.away="isOpen = false" 
+                            style="display: none;">
+                            <ul class="max-h-48 overflow-y-auto">
+                                <template x-for="lokasi in filteredLokasi()" :key="lokasi.id">
+                                    <li @click="selectLokasi(lokasi)" 
+                                        class="px-4 py-2 cursor-pointer hover:bg-gray-200" 
+                                        x-text="lokasi.namaLokasi + ', ' + lokasi.kota + ', ' + lokasi.negara + ', ' + lokasi.provinsi"></li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Show selected locations -->
+                    <div class="mt-2 flex flex-wrap">
+                        <template x-for="selected in selectedLokasi" :key="selected.id">
+                            <span class="inline-flex items-center px-3 py-0.5 mr-2 mb-2 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                                <span x-text="selected.namaLokasi + ', ' + selected.kota + ', ' + selected.negara + ', ' + selected.provinsi"></span>
+                                <button type="button" class="ml-1 text-blue-500 hover:text-blue-800" @click="removeLokasi(selected.id)">
+                                    &times;
+                                </button>
+                            </span>
+                        </template>
+                        </div>
+
+                        <!-- Hidden inputs for each selected location -->
+                        <template x-for="selected in selectedLokasi" :key="selected.id">
+                            <input type="hidden" name="lokasi[]" :value="selected.id">
+                        </template>
+                    </div>
+                    <button type="submit" class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function multiSelect() {
+            return {
+                search: '',
+                isOpen: false,
+                selectedLokasi: <?php echo json_encode($selected_lokasi); ?>,
+                allLokasi: <?php echo json_encode($lokasi_list['data']); ?>,
+
+                filteredLokasi() {
+                    if (this.search === '') {
+                        return this.allLokasi.filter(lokasi => !this.selectedLokasi.some(selected => selected.id === lokasi.id));
+                    }
+                    return this.allLokasi.filter(lokasi => 
+                        (lokasi.namaLokasi.toLowerCase().includes(this.search.toLowerCase()) ||
+                         lokasi.kota.toLowerCase().includes(this.search.toLowerCase()) ||
+                         lokasi.negara.toLowerCase().includes(this.search.toLowerCase())) &&
+                         !this.selectedLokasi.some(selected => selected.id === lokasi.id)
+                    );
+                },
+
+                selectLokasi(lokasi) {
+                    this.selectedLokasi.push(lokasi);
+                    this.search = ''; 
+                    this.isOpen = false; 
+                },
+
+                removeLokasi(id) {
+                    this.selectedLokasi = this.selectedLokasi.filter(lokasi => lokasi.id !== id);
+                },
+
+                closeDropdown() {
+                    this.isOpen = false;
+                }
+            }
+        }
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 </html>

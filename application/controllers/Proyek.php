@@ -27,10 +27,11 @@ class Proyek extends CI_Controller{
     public function store(){
         $array_of_lokasi = $this->input->post('lokasi');
         $object_of_lokasi = array();
-
+        
         foreach($array_of_lokasi as $lokasi){
             $object_of_lokasi[] = array('id' => $lokasi);
         }
+        // var_dump($object_of_lokasi); die;
         $json_lokas_id = json_encode($object_of_lokasi);
         
         $tglMulai = date('Y-m-d', strtotime($this->input->post('start-date')));
@@ -45,6 +46,7 @@ class Proyek extends CI_Controller{
             'tglSelesai' => $tglSelesai,
             'keterangan' => 'asdfkjsldkfjslkfjslkdjflskjdf'
         ];
+        
 
         $response = call_api($this->api_url.('/proyek'), 'POST', $data);
 
@@ -54,6 +56,8 @@ class Proyek extends CI_Controller{
     public function edit($id){
         $data['proyek'] = call_api($this->api_url.('/proyek/'.$id), 'GET');
         $data['lokasi_list'] = call_api($this->api_url.('/lokasi'), 'GET');
+        $data['selected_lokasi'] = $data['proyek']['data']['lokasiProyek'];
+
 
         $this->load->view('proyek/proyek_edit', $data);
     }
@@ -84,6 +88,14 @@ class Proyek extends CI_Controller{
 
         $response = call_api($this->api_url.('/proyek'), 'PUT', $data);
 
+        redirect('index.php/proyek');
+    }
+
+    public function delete($id){
+        $data = [
+            'id' => $id
+        ];
+        $response = call_api($this->api_url.('/proyek'), 'DELETE', $data);
         redirect('index.php/proyek');
     }
 
