@@ -1,7 +1,9 @@
 <?php
+    $this->load->helper('url');
     $data = $proyek_list['data'];
     $status = $proyek_list['status'];
     $message = $proyek_list['message']; 
+    
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,9 @@
                 <p class="mt-2 text-sm text-gray-700">A list of all the project.</p>
             </div>
             <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add project</button>
+                <a href="<?php echo(base_url ('proyek/create'))?>">
+                    <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add project</button>
+                </a>
             </div>
         </div>
         <div class="mt-8 flow-root">
